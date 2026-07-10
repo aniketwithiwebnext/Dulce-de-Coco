@@ -44,10 +44,15 @@ export default function Header({ cartCount, onOpenCart }: HeaderProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#home" className="flex items-center space-x-2 group">
-            <span className="p-2 bg-[#4B5D41] rounded-full text-white shadow-md group-hover:bg-[#3D2B1F] transition-colors">
-              <Leaf className="h-5 w-5" />
-            </span>
+          <a href="#home" className="flex items-center space-x-3 group">
+            <div className="h-12 w-12 rounded-full overflow-hidden border border-[#F0ECE4]/60 shadow-md group-hover:scale-105 transition-all duration-300 bg-white flex items-center justify-center ring-2 ring-[#4B5D41]/10 group-hover:ring-[#4B5D41]/30">
+              <img
+                src="https://yqfgfzltfpusowdq.public.blob.vercel-storage.com/Logo_for_Dulce_de_Coco_202607110349.jpeg"
+                alt="Dulce de Coco logo"
+                className="h-full w-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+            </div>
             <div className="flex flex-col">
               <span className="font-serif font-bold text-xl sm:text-2xl tracking-tight text-[#3D2B1F] group-hover:text-[#4B5D41] transition-colors leading-none">
                 Dulce de Coco

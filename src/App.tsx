@@ -682,10 +682,15 @@ export default function App() {
           
           {/* Column 1: Brand Info */}
           <div className="md:col-span-4 space-y-4">
-            <div className="flex items-center space-x-2">
-              <span className="p-1.5 bg-[#4B5D41] rounded-full text-white">
-                <Leaf className="h-4.5 w-4.5" />
-              </span>
+            <div className="flex items-center space-x-3">
+              <div className="h-10 w-10 rounded-full overflow-hidden border border-[#5C4D42] bg-white flex items-center justify-center">
+                <img
+                  src="https://yqfgfzltfpusowdq.public.blob.vercel-storage.com/Logo_for_Dulce_de_Coco_202607110349.jpeg"
+                  alt="Dulce de Coco logo"
+                  className="h-full w-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
               <span className="font-serif font-bold text-lg sm:text-xl tracking-tight">Dulce de Coco</span>
             </div>
             <p className="text-xs sm:text-sm text-[#5C4D42] leading-relaxed">
