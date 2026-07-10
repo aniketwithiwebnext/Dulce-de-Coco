@@ -1,0 +1,6 @@
+{
+  "name": "Dulce de Coco",
+  "description": "Premium vegan, dairy-free, and gluten-free coconut condensed milk brand based in Davenport, Florida. Rich flavors, healthy desserts, and family-friendly recipes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
