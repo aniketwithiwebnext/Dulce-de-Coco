@@ -333,7 +333,7 @@ export default function App() {
                   Best Seller
                 </div>
                 <img
-                  src={PRODUCT_DATA.image}
+                  src="https://yqfgfzltfpusowdq.public.blob.vercel-storage.com/624855482_18252983437288147_46889464612528778_n.jpg"
                   alt={PRODUCT_DATA.name}
                   referrerPolicy="no-referrer"
                   className="w-full h-auto object-contain max-h-[380px] hover:scale-105 transition-transform duration-500"
