@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FormEvent } from "react";
+import React, { useState, useEffect, useRef, FormEvent } from "react";
 import {
   Leaf,
   Sparkles,
@@ -20,7 +20,9 @@ import {
   Twitter,
   Quote,
   CheckCircle2,
-  Mail
+  Mail,
+  Volume2,
+  VolumeX
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -48,6 +50,17 @@ export default function App() {
   const [showNotification, setShowNotification] = useState(false);
   const [emailInput, setEmailInput] = useState("");
   const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      const newMuted = !videoRef.current.muted;
+      videoRef.current.muted = newMuted;
+      setIsMuted(newMuted);
+    }
+  };
 
   // Scroll to Top visibility
   useEffect(() => {
@@ -131,10 +144,40 @@ export default function App() {
       {/* Hero Section */}
       <section
         id="home"
-        className="relative pt-24 pb-16 lg:pt-36 lg:pb-24 flex items-center bg-[radial-gradient(#E8E2D6_1px,transparent_1px)] [background-size:24px_24px] min-h-[90vh]"
+        className="relative pt-24 pb-16 lg:pt-36 lg:pb-24 flex items-center min-h-[90vh] overflow-hidden isolate"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="max-w-4xl mx-auto text-center space-y-6 z-10" id="hero-statement">
+        {/* Background Video with premium soft overlay for text contrast */}
+        <div className="absolute inset-0 -z-10">
+          <video
+            ref={videoRef}
+            src="https://yqfgfzltfpusowdq.public.blob.vercel-storage.com/Create_video_Dulce_de_Coco_202607110328.mp4"
+            autoPlay
+            loop
+            muted={isMuted}
+            playsInline
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-[#F9F7F2]/20 backdrop-blur-[1px] bg-gradient-to-b from-[#F9F7F2]/10 via-transparent to-[#F9F7F2]/40"></div>
+        </div>
+
+        {/* Floating Mute/Unmute toggle button */}
+        <div className="absolute bottom-6 right-6 lg:bottom-8 lg:right-8 z-20">
+          <button
+            onClick={toggleMute}
+            className="flex items-center justify-center p-3.5 bg-[#3D2B1F]/80 hover:bg-[#3D2B1F] text-[#F9F7F2] rounded-full shadow-lg backdrop-blur-md transition-all border border-[#F0ECE4]/30 group hover:scale-105 active:scale-95"
+            aria-label={isMuted ? "Unmute background video" : "Mute background video"}
+            title={isMuted ? "Unmute background video" : "Mute background video"}
+          >
+            {isMuted ? (
+              <VolumeX className="h-5 w-5 animate-pulse text-[#E8E2D6]" />
+            ) : (
+              <Volume2 className="h-5 w-5 text-[#E8E2D6]" />
+            )}
+          </button>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+          <div className="max-w-4xl mx-auto text-center space-y-6" id="hero-statement">
             <div className="inline-flex items-center space-x-2 bg-[#E8E2D6] px-4 py-1.5 rounded-full text-xs font-bold text-[#4B5D41] uppercase tracking-wider shadow-sm">
               <Sparkles className="h-3.5 w-3.5 animate-pulse" />
               <span>Premium Plant-Based Confectionery</span>
@@ -192,7 +235,7 @@ export default function App() {
             <div className="lg:col-span-5 relative" id="about-image-layout">
               <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-lg border border-[#F0ECE4]">
                 <img
-                  src="/src/assets/images/hero_coconut_milk_1783719717323.jpg"
+                  src="https://yqfgfzltfpusowdq.public.blob.vercel-storage.com/622858312_18092874721985113_4609954327067665168_n.jpg"
                   alt="Organic Coconut Condensed Milk and Baking Ingredients"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
